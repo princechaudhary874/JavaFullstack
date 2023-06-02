@@ -9,16 +9,18 @@ public class DigitalClock {
 			while (true) {
 				final int INTERVAL = 1000;
 				LocalDateTime localDateTime = LocalDateTime.now();
-				System.out.println(localDateTime.getMonth() + "/" + localDateTime.getDayOfMonth() + "/"
-						+ localDateTime.getYear() + "  " + localDateTime.getHour() + ":" + localDateTime.getMinute()
+				System.out.println(localDateTime.getMonth() + "/" 
+						+ localDateTime.getDayOfMonth() + "/"
+						+ localDateTime.getYear() + "  " 
+						+ localDateTime.getHour() + ":" 
+		 				+ localDateTime.getMinute()
 						+ ":" + localDateTime.getSecond());
 
 				Thread.sleep(INTERVAL);
 			}
 		} catch (Exception e) {
 			System.out.println("error : " + e.getMessage());
-		}
-		finally {
+		} finally {
 			System.out.println("Finally!!!");
 		}
 	}

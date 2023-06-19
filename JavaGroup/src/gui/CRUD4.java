@@ -10,13 +10,13 @@ import javax.swing.JTextField;
 import global.Global;
 import jdbc.v3.CRUDV1;
 
-public class CRUD2 extends JFrame implements ActionListener {
+public class CRUD4 extends JFrame implements ActionListener {
 	JLabel lblPID, lblName, lblAddress;//create object of JLabel
 	JTextField txtPID, txtName, txtAddress;//create object of JTextField
-	JButton btnSearch, btnClose;//create object of JButton
+	JButton btnSearch, btnClose,btnDelete;//create object of JButton
 
-	public CRUD2() {
-		setTitle("Search Record");//set frame title
+	public CRUD4() {
+		setTitle("Search and Update Record");//set frame title
 		setSize(350, 350);//set frame size
 		setResizable(false);
 		lblPID = new JLabel("PID : ");//label PID
@@ -36,12 +36,16 @@ public class CRUD2 extends JFrame implements ActionListener {
 		txtAddress = new JTextField();
 		txtAddress.setBounds(100, 100, 150, 30);
 
-		btnSearch = new JButton("Search");//create save button
+		btnSearch = new JButton("Search");//create search button
 		btnSearch.setBounds(40, 160, 100, 30);
-
 		btnSearch.addActionListener(this);
+		
+		btnDelete=new JButton("Delete");
+		btnDelete.setBounds(160, 160, 100, 30);
+		btnDelete.addActionListener(this);
+		
 		btnClose = new JButton("Close");
-		btnClose.setBounds(160, 160, 100, 30);
+		btnClose.setBounds(100, 200, 100, 30);
 		btnClose.addActionListener(this);
 		setLayout(null);
 		add(lblPID);//shown PID in frame by using it
@@ -51,6 +55,7 @@ public class CRUD2 extends JFrame implements ActionListener {
 		add(lblAddress);
 		add(txtAddress);
 		add(btnSearch);
+		add(btnDelete);
 		add(btnClose);
 		setVisible(true);
 	}
@@ -59,7 +64,7 @@ public class CRUD2 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == btnClose) {
 			System.exit(0);
-		} else if (ae.getSource() == btnSearch) {
+		} if (ae.getSource() == btnSearch) {
 			int pid=Integer.parseInt(txtPID.getText());
 			String name=txtName.getText();
 			String address=txtAddress.getText();
@@ -71,14 +76,25 @@ public class CRUD2 extends JFrame implements ActionListener {
 			} else {
 				txtName.setText("");
 				txtAddress.setText("");
-				JOptionPane.showMessageDialog(this, "Error to Search record");
 			}
-
+		}	
+		if(ae.getSource()==btnDelete) {
+			int pid=Integer.parseInt(txtPID.getText());
+			String name=txtName.getText();
+			String address=txtAddress.getText();
+			boolean result= new CRUDV1().delete(pid);
+			if(result) {
+				JOptionPane.showMessageDialog(this,"Delete record successfully");
+			} else {
+				txtName.setText("");
+				txtAddress.setText("");
+			}
 		}
+		
 	}
 
 	public static void main(String[] args) {
-		new CRUD2();// Use new while calling constructor
+		new CRUD4();// Use new while calling constructor
 	}
 
 }

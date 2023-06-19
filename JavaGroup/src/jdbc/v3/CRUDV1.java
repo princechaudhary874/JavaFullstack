@@ -9,7 +9,7 @@ import global.Global;
 public class CRUDV1 extends MySQLConnection {
 	public boolean insert(int pid, String name, String address) {
 		boolean result = false;
-		String sql = "INSERT INTO student VALUES(?,?,?)";//? for placeholder
+		String sql = "INSERT INTO student VALUES(?,?,?)";// ? for placeholder
 		try {
 			Connection conn = connect();// connect with db
 			// Insert Record
@@ -29,24 +29,24 @@ public class CRUDV1 extends MySQLConnection {
 
 	public boolean search(int pid) {
 		boolean result = false;
-		String sql="SELECT * FROM student WHERE pid=?";
+		String sql = "SELECT * FROM student WHERE pid=?";
 		try {
 			Connection conn = connect();
 			PreparedStatement pstat = conn.prepareStatement(sql);
 			pstat.setInt(1, pid);// set PID
-			ResultSet rs=pstat.executeQuery();
+			ResultSet rs = pstat.executeQuery();
 			while (rs.next()) {
-				result=true;
-				Global.pid=rs.getInt("pid");
-				Global.name=rs.getString("name");
-				Global.address=rs.getString("address");
+				result = true;
+				Global.pid = rs.getInt("pid");
+				Global.name = rs.getString("name");
+				Global.address = rs.getString("address");
 			}
-					pstat.close();
-					rs.close();
-					close(conn);
-			
-		}catch (Exception ex) {
-			Global.pid=-1;
+			pstat.close();
+			rs.close();
+			close(conn);
+
+		} catch (Exception ex) {
+			Global.pid = -1;
 			ex.printStackTrace();
 		}
 		return result;
@@ -55,14 +55,46 @@ public class CRUDV1 extends MySQLConnection {
 	public void selectAll() {
 
 	}
-	
+
 	public boolean update(int pid, String name, String address) {
 		boolean result = false;
+		String sql = "UPDATE student SET name=?,address=? WHERE pid=?";
+		try {
+			Connection conn = connect();
+			PreparedStatement pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);// set address
+			pstat.setString(2, address);// set address
+			pstat.setInt(3,pid);
+			pstat.executeUpdate();
+			result=true;
+			pstat.close();
+			close(conn);
+
+		} catch (Exception ex) {
+			Global.pid = -1;
+			ex.printStackTrace();
+		}
+
 		return result;
+
 	}
 
 	public boolean delete(int pid) {
 		boolean result = false;
+		String sql = "DELETE FROM student WHERE pid=?";
+		try {
+			Connection conn = connect();
+			PreparedStatement pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, pid);//set pid
+			pstat.executeUpdate();
+			result=true;
+			pstat.close();
+			close(conn);
+
+		} catch (Exception ex) {
+			Global.pid = -1;
+			ex.printStackTrace();
+		}
 		return result;
 	}
 }

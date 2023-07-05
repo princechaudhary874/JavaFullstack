@@ -12,7 +12,7 @@ public class MathTest {
 		*/
 		
 		//static double	ceil(double a)
-		double result = Math.ceil(123456.45789);
+		double result = Math.floor(123456.945789);
 		System.out.println(result);
 		
 	}

@@ -41,7 +41,39 @@ public class Border_Layout {
 		panel3.setPreferredSize(new Dimension(100,100));
 		panel4.setPreferredSize(new Dimension(100,100));
 		panel5.setPreferredSize(new Dimension(100,100));
-
+//---------------------Sub_Panels---------------------------------------------------------------------		
+		
+		//create JPanel
+		JPanel panel6=new JPanel();
+		JPanel panel7=new JPanel();
+		JPanel panel8=new JPanel();
+		JPanel panel9=new JPanel();
+		JPanel panel10=new JPanel();
+		//set background for JPanel
+		panel6.setBackground(Color.gray);
+		panel7.setBackground(Color.pink);
+		panel8.setBackground(Color.black);
+		panel9.setBackground(Color.yellow);
+		panel10.setBackground(Color.white);
+		
+		
+		//set dimension of JPanel
+		panel6.setPreferredSize(new Dimension(50,50));
+		panel7.setPreferredSize(new Dimension(50,50));
+		panel8.setPreferredSize(new Dimension(50,50));
+		panel9.setPreferredSize(new Dimension(50,50));
+		panel10.setPreferredSize(new Dimension(50,50));
+		
+		//adding layout
+		panel3.setLayout(new BorderLayout(10,10));
+		// adding sub panels to border layout
+		panel3.add(panel6,BorderLayout.NORTH);
+		panel3.add(panel7,BorderLayout.WEST);
+		panel3.add(panel8,BorderLayout.SOUTH);
+		panel3.add(panel9,BorderLayout.CENTER);
+		panel3.add(panel10,BorderLayout.EAST);
+//--------------------------------------------------------------------------------		
+		
 		//adding panel with border layout
 		frame.add(panel1,BorderLayout.NORTH);
 		frame.add(panel2,BorderLayout.WEST);

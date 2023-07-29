@@ -5,5 +5,5 @@
  * @author Dell
  *
  */
-module DSAQuestion {
+module Java_Projects {
 }

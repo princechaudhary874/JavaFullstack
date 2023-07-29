@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="DSAQuestion/src"/>
+	<classpathentry excluding="week4/day1/" kind="src" path="JavaGroup/src"/>
+	<classpathentry kind="src" path="JavaGroup/src/week4/day1"/>
+	<classpathentry kind="src" path="MyLibrary/src"/>
+	<classpathentry excluding="payroll/" kind="src" path="MyProject/src"/>
+	<classpathentry kind="src" path="MyProject/src/payroll"/>
+	<classpathentry kind="lib" path="JavaGroup/libs/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="lib" path="MyProject/mylibs/MyLibrary2.jar"/>
+	<classpathentry kind="output" path="DSAQuestion/bin"/>
+</classpath>
